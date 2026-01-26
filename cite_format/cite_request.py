@@ -10,11 +10,12 @@ def main():
     input_request = input('Extract citation? ')
     if re.search(r'^y',input_request.lower()):
         cite_extract_name = 'cite_extract.bib'
+        path = '/workspaces/dvle-335/'
         doi_input = input('Your doi: ')
         result = cite_request(doi_input)
         try:
             writer = BibTexWriter()
-            with open(cite_extract_name,'w') as f:
+            with open(path+cite_extract_name,'w') as f:
                 f.write(writer.write(result))
             print(f'citation saved in file',cite_extract_name)
         except AttributeError:
