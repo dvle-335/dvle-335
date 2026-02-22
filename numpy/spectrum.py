@@ -1,10 +1,11 @@
-from peak import new_file
+from peak import new_file, peak_find
 from figure_plot import plot2D
 import matplotlib.pyplot as plt
 
 def main():
     data = new_file('rempi.txt')
-    plot2D(data,'REMPI')
+    peakvalue = peak_find(data)
+    plot2D(data, peakvalue, plottype = 'REMPI')
     plt.savefig('myplot.png', dpi = 300)
 
 if __name__ == '__main__':
