@@ -4,6 +4,7 @@ import sys
 from scipy.signal import find_peaks
 
 def new_file(name,headercheck = 0):
+#read data from either .csv or .txt file, return a 2D array.
     if name == '':
         sys.exit('name file not exist')
     elif name.endswith('.csv'):
@@ -15,9 +16,13 @@ def new_file(name,headercheck = 0):
     return data
 
 def peak_find(data):
+#find all the peaks from 2D data based on peak characteristic restrictions.
     peak, _= find_peaks(data[:,1],
                             height = 0.1,
                             distance = 5,
                             prominence = 0.05)
-    print(data[peak])
     return data[peak]
+
+def mass_find(data, mass_list):
+#convert a flight time spectrum to a mass spectrum based on the given mass list.
+    
