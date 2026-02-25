@@ -35,11 +35,12 @@ def mass_convert(data, mass_list):
 #convert a flight time spectrum to a mass spectrum based on the given mass list.
     peak_pos = peak_find(data, 35, 20, 0.3)
     print('number of peak found', peak_pos.shape[0])
-    if peak_pos.shape[0] is not len(mass_list):
+    if len(mass_list) == 1 or peak_pos.shape[0] == 1:
+        sys.exit('Not enough data for fitting')
+    elif peak_pos.shape[0] is not len(mass_list):
         sys.exit('mismatch between data and possible mass')
     popt, _ = curve_fit(fit_func, mass_list, peak_pos[:,0])
     data[:,0] = np.power((data[:,0]-popt[1])/popt[0],2)
-
     return data
 
 
