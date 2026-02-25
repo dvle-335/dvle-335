@@ -16,7 +16,7 @@ def plot2D(data,data2 = None, plottype = 'default', xlim = None, ylim = None):
         plt.ylim(ylim)
     if plottype.lower() == 'flighttime':
         plt.plot(data[:,0]*1000,data[:,1])
-        plt.xlabel('Flight time (ms)')
+        plt.xlabel('Flight time ($\mu$s)')
         plt.ylabel('Ion counts(a.u.)')
         plt.title('Flight time spectrum')   
     else:

@@ -19,7 +19,7 @@ def new_file(name,headercheck = 0):
         sys.exit('file format not correct')
     for col in data.columns:
         if data[col].dtype == np.object_:
-            data[col] = data[col].str.replace(',','.').str.strip().astype(float)
+            data[col] = data[col].str.replace(',','.').astype(np.float64)
         elif data[col].dtype == np.float64:
             continue
     return data.to_numpy()
