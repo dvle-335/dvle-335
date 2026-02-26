@@ -15,11 +15,12 @@ def main():
 
 
     massdata = new_file(rawdata2)
+    massdata[:,0] = massdata[:,0]*1000
+    masspeak = peak_find(massdata, 35, 20, 0.3)
     newmass = mass_convert(massdata,[16,17,18])
     plot2D(newmass,plottype = 'ms', xlim = [14, 20])
     plt.savefig('massplot.png',dpi = 300)
-
-    plot2D(massdata, plottype = 'flighttime')
+    plot2D(massdata, masspeak, plottype = 'flighttime', xlim = [1.0 , 1.4], ylim = [0, masspeak[:,1].max()*1.2])
     plt.savefig('flighttime.png', dpi = 300)
 if __name__ == '__main__':
     main()

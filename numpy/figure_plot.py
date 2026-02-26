@@ -15,7 +15,7 @@ def plot2D(data,data2 = None, plottype = 'default', xlim = None, ylim = None):
     if ylim is not None:
         plt.ylim(ylim)
     if plottype.lower() == 'flighttime':
-        plt.plot(data[:,0]*1000,data[:,1])
+        plt.plot(data[:,0],data[:,1])
         plt.xlabel('Flight time ($\mu$s)')
         plt.ylabel('Ion counts(a.u.)')
         plt.title('Flight time spectrum')   
@@ -36,4 +36,5 @@ def plot2D(data,data2 = None, plottype = 'default', xlim = None, ylim = None):
             sys.exit('incorrect plottype')
 
     if data2 is not None:
-        plt.plot(data2[:,0],data2[:,1], 'o')
+        for i in range(len(data2[:,0])):
+            plt.annotate(f'{data2[i,0]:.3f}', xy = (data2[i,0], data2[i,1]), xytext = [data2[i,0], data2[i,1]+data2[:,1].max()*0.05], ha = 'center')
