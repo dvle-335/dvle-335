@@ -33,6 +33,7 @@ def peak_find(data,height = 0.1, distance = 5, prominence = 0.05):
 
 def mass_convert(data, mass_list):
 #convert a flight time spectrum to a mass spectrum based on the given mass list.
+    result_data = data.copy()
     peak_pos = peak_find(data, 35, 20, 0.3)
     print('number of peak found', peak_pos.shape[0])
     if len(mass_list) == 1 or peak_pos.shape[0] == 1:
@@ -40,8 +41,8 @@ def mass_convert(data, mass_list):
     elif peak_pos.shape[0] is not len(mass_list):
         sys.exit('mismatch between data and possible mass')
     popt, _ = curve_fit(fit_func, mass_list, peak_pos[:,0])
-    data[:,0] = np.power((data[:,0]-popt[1])/popt[0],2)
-    return data
+    result_data[:,0] = np.power((data[:,0]-popt[1])/popt[0],2)
+    return result_data
 
 
 def fit_func(x, a, b):
