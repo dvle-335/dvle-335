@@ -34,7 +34,17 @@ def plot2D(data,data2 = None, plottype = 'default', xlim = None, ylim = None):
             plt.title('Mass spectrum')
         else:
             sys.exit('incorrect plottype')
-
+#annotate peak position on top of peak in the graph.
     if data2 is not None:
         for i in range(len(data2[:,0])):
             plt.annotate(f'{data2[i,0]:.3f}', xy = (data2[i,0], data2[i,1]), xytext = [data2[i,0], data2[i,1]+data2[:,1].max()*0.05], ha = 'center')
+
+def plotmulti():
+    plt.figure()
+    plt.rcParams.update({
+       'font.size':16, 
+       'mathtext.fontset': 'stix',
+       'font.family': 'STIXGeneral',
+    })
+#plot multiple data in one graph.
+    pass      
