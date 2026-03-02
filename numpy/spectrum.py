@@ -1,6 +1,9 @@
 from peak import new_file, peak_find, mass_convert, fit_func
 from figure_plot import plot2D
 import matplotlib.pyplot as plt
+#need to install adjustText package for text annotation.
+from adjustText import adjust_text
+
 
 def main():
     rawdata1 = 'rempi.txt'
@@ -16,6 +19,7 @@ def main():
 
     massdata = new_file(rawdata2)
     massdata[:,0] = massdata[:,0]*1000
+
     masspeak = peak_find(massdata, 35, 20, 0.3)
     newmass = mass_convert(massdata,[16,17,18])
     plot2D(newmass,plottype = 'ms', xlim = [14, 20])
