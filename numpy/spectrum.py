@@ -1,8 +1,7 @@
 from peak import new_file, peak_find, mass_convert, fit_func
 from figure_plot import plot2D
 import matplotlib.pyplot as plt
-#need to install adjustText package for text annotation.
-from adjustText import adjust_text
+
 
 
 def main():
