@@ -4,7 +4,7 @@ import sys
 #need to install adjustText package for text annotation.
 from adjustText import adjust_text
 #diffrent kind of plotting depending on the data set
-def plot2D(data,data2 = None, plottype = 'default', xlim = None, ylim = None):
+def plot2D(data,data2 = None, plottype = 'default', xlim = None, ylim = None, acc = 3):
 #plot a 2D data, and data2 is the peak value based on peak_find function.
 #strictly no data modification to avoid data corruption.
 
@@ -42,7 +42,7 @@ def plot2D(data,data2 = None, plottype = 'default', xlim = None, ylim = None):
     if data2 is not None:
         texts = [];
         for i in range(len(data2[:,0])):
-            t = plt.text(data2[i,0], data2[i,1],f'{data2[i,0]:.3f}', ha = 'center', va = 'bottom')
+            t = plt.text(data2[i,0], data2[i,1],f'{data2[i,0]:.{acc}f}', ha = 'center', va = 'bottom')
             texts.append(t)
         adjust_text(texts)
 

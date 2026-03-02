@@ -12,7 +12,7 @@ def main():
 
     rempidata = new_file(rawdata1)
     rempipeak = peak_find(rempidata)
-    plot2D(rempidata, rempipeak, plottype = 'REMPI')
+    plot2D(rempidata, rempipeak, plottype = 'REMPI', acc = 1)
     plt.savefig('myplot.png', dpi = 300)
 
 
